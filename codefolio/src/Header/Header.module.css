@@ -12,11 +12,11 @@ h1{
     display: inline-block;
     position: absolute;
     left: 5%;
-    top: 25%;
+    top: 10%;
     background-image: linear-gradient(to left, #23f2f0 , #e78c28);
     background-clip: text;
     color: transparent;
-    font-size: 40px;
+    font-size: 2.8rem;
 }
 
 nav ul{
@@ -50,7 +50,7 @@ nav li:hover::before{
 
 nav a{
     font-family: 'Manrope', sans-serif;
-    font-size: 18px;
+    font-size: 1.2rem;
     color: #39d3d2;
     padding: 10px 15px;
     text-decoration: none;
@@ -67,4 +67,30 @@ img{
     right: 5%;
     height: 60%;
     border-radius: 100%;
+}
+/*responsiveness*/
+
+@media (max-width: 1440px) { /* Large laptops */
+    h1 { font-size: 2.5rem; top: 10%; }
+    nav a { font-size: 1rem; }
+}
+
+@media (max-width: 1200px) { /* Small laptops */
+    h1 { font-size: 2.2rem; top: 15%; }
+    nav a { font-size: 0.9rem; }
+}
+
+@media (max-width: 1024px) { /* Tablets */
+    h1 { font-size: 2rem; top: 20%; }
+    nav a { font-size: 0.8rem; }
+}
+
+@media (max-width: 768px) { /* Large phones */
+    h1 { font-size: 1.5rem; top: 25%; }
+    nav a { font-size: 0.7rem; }
+}
+
+@media (max-width: 524px) { /* Small phones */
+    h1 { font-size: 1.2rem; top: 30%; }
+    nav a { font-size: 0.6rem; }
 }

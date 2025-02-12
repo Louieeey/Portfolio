@@ -8,7 +8,6 @@ function Header() {
             <h1>Codefolio</h1>
             <a href="https://github.com/Louieeey"><img src="images/Github.jpg" alt="Github icon"></img></a>
         </header>
-        print
         <nav>
             <ul>
                 <li><a href="">Home</a></li>
