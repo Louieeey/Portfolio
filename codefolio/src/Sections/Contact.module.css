@@ -1,0 +1,9 @@
+.section{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    background-color: gainsboro;
+    scroll-snap-align: start;
+}

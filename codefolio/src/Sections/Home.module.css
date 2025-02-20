@@ -1,0 +1,205 @@
+.section{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+    scroll-margin-top: 100px;
+}
+.frame{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 18%;
+    height: 100vh;
+}
+
+.card{
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+@property --angle1{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@property --angle2{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.card::after, .card::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    border-radius: 100%;
+    padding: 10px;
+    animation: 3s spin linear infinite;
+}
+
+.card::before{
+    background-image: conic-gradient(from var(--angle1), transparent 45%, white, cyan);
+    animation: spin1 5s linear infinite;
+    opacity: 1;
+    filter: blur(0.2rem)
+}
+
+.card::after{
+    background-image: conic-gradient(from var(--angle2), transparent 45%, white, cyan);
+    animation: spin2 8s linear infinite;
+    opacity: 1;
+    filter: blur(0.2rem)
+}
+
+@keyframes spin1{
+    from{
+        --angle1: 0deg;
+    }
+    to{
+        --angle1: 360deg;
+    }
+}
+
+@keyframes spin2 {
+    from {
+        --angle2: 180deg;
+    }
+    to {
+        --angle2: 720deg;
+    }
+}
+
+.frame img{
+    border-radius: 100%;
+    width: 400px;
+    height: 400px;
+}
+
+.desc1{
+    align-items: center;
+    color: white;
+}
+
+.desc1 h2{
+    font-family: 'Manrope', sans-serif;
+    font-size: 50px;
+    background-image: linear-gradient(to left, white , #23f2f0);
+    background-clip: text;
+    color: transparent;
+}
+
+.desc1 p{
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+}
+
+.desc2{
+    width: 650px;
+}
+
+p span{
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    -webkit-text-stroke: 0vw black;
+    margin: 25px 0px 25px 0px;
+    font-size: 50px;
+
+}
+
+p span::before{
+    content: attr(data-text1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: white;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 0px solid white;
+    overflow: hidden;
+    animation: fill-text1 15s linear infinite;
+    white-space: nowrap;
+}
+
+p span::after{
+    content: attr(data-text2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: white;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 0px solid white;
+    overflow: hidden;
+    animation: fill-text2 15s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes fill-text1{
+    0%, 10% { width: 0; opacity: 1; }  
+    15%, 40% { width: 100%; opacity: 1; }  
+    45%, 55% { width: 0; opacity: 0; visibility: hidden; }
+    56%, 100% { visibility: hidden; } 
+}
+
+@keyframes fill-text2{
+    0%, 55% { width: 0; opacity: 0; visibility: hidden; }
+    60%, 85% { width: 100%; opacity: 1; visibility: visible; }  
+    90%, 100% { width: 0; opacity: 0; visibility: hidden; }
+}
+
+@media(max-width: 1440px) { /* Large laptops */
+    .card{width: 300px; height: 300px;}
+    .frame img{width: 300px; height: 300px;}
+    .desc1 h2{font-size: 45px;}
+    .desc1 p{font-size: 18px;}
+    .desc2{width: 600px;}
+    p span{font-size: 45px;}
+}
+
+@media(max-width: 1200px) { /* Small laptops */
+    .card{width: 275px; height: 275px;}
+    .frame img{width: 275px; height: 275px;}
+    .desc1 h2{font-size: 35px;}
+    .desc1 p{font-size: 16px;}
+    .desc2{width: 500px;}
+    p span{font-size: 35px;}
+}
+
+@media(max-width: 1024px) { /* Tablets */
+    .card{width: 250px; height: 250px;}
+    .frame img{width: 250px; height: 250px;}
+    .desc1 h2{font-size: 25px;}
+    .desc1 p{font-size: 14px;}
+    .desc2{width: 350px;}
+    p span{font-size: 25px;}
+}
+
+@media(max-width: 768px) { /* Large phones */
+    .card{width: 175px; height: 175px;}
+    .frame img{width: 175px; height: 175px;}
+    .desc1 h2{font-size: 15px;}
+    .desc1 p{font-size: 8px;}
+    .desc2{width: 200px;}
+    p span{font-size: 15px;}
+}
+
+@media(max-width: 524px) { /* Small phones */
+    .card{width: 150px; height: 150px;}
+    .frame img{width: 150px; height: 150px;}
+    .desc1 h2{font-size: 12px;}
+    .desc1 p{font-size: 7px;}
+    .desc2{width: 175px;}
+    p span{font-size: 12px;}
+}

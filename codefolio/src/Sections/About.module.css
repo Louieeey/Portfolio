@@ -1,0 +1,229 @@
+.section{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-margin-top: 100px;
+}
+
+.container{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    column-gap: 10%;
+    width: 75vw;
+    height: 40%;
+    background: #181818;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.card{
+    border-radius: 100%;
+    width: 300px;
+}
+
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.container::after, .container::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), transparent 50%, white, cyan);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 10px;
+    border-radius: 10px;
+    animation: 5s spin linear infinite;
+}
+
+.container::before{
+    filter: blur(1.5rem);
+}
+
+.container img{
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+}
+
+@keyframes spin{
+    from{
+        --angle: 0deg
+    }
+    to{
+        --angle: 360deg
+    }
+}
+
+.desc p{
+    font-size: 18px;
+    font-family: 'Manrope', sans-serif;
+    color: white;
+    width: 600px;
+}
+
+.btnContainer{
+    margin-top: 51px;
+}
+
+.navbtn{
+    width: 8em;
+    position: relative;
+    height: 2em;
+    border: 3px ridge cyan;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 25px;
+}
+
+.navbtn::after{
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: black;
+    transition: 0.5s;
+    transform-origin: center;
+}
+  
+.navbtn::before{
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: black;
+    transition: 0.5s;
+}
+  
+.navbtn:hover::before, button:hover::after{
+    transform: scale(0)
+}
+  
+.navbtn:hover{
+    box-shadow: inset 0px 0px 25px cyan;
+}
+
+.contentContainer{
+    display: flex;
+    position: absolute;
+    justify-content: flex;
+    align-items: flex-start;
+    width: 76%;
+    height: 50%;
+    padding: 40px 40px;  
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.content{
+    display: flex;
+    color: white;
+    flex-wrap: wrap;
+    width: 70%;
+    row-gap: 40px;
+    column-gap: 100px;
+}
+
+.contbtn{
+    display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: white;
+  width: 10em;
+  height: 4em;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 0.5em;
+  background: transparent;
+  border: 2px solid cyan;
+  box-shadow: cyan;
+}
+
+.contbtn:active{
+    color: white;
+    border: 15px solid white;
+    box-shadow: inset 0 0 10px rgba(0, 255, 234, 0.7);
+}
+  
+.contbtn:before,
+.contbtn:after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 255, 234, 0.2);
+    z-index: -1;
+    transform: scale(0);
+    transition: transform 0.5s;
+    border-radius: inherit;
+}
+  
+.contbtn:before{
+    content: '';
+    transition-delay: 0s;
+}
+  
+.contbtn:after{
+    transition-delay: 0.25s;
+}
+  
+.contbtn:hover:before,
+.contbtn:hover:after{
+    transform: scale(1.2);
+}
+
+@media(max-width: 1440px) { /* Large laptops */
+    .container{height: 35%;}
+    .card img{width: 275px; height: 275px;}
+    .desc p{font-size: 14px; width: 500px;}
+}
+
+@media(max-width: 1200px) { /* Small laptops */
+    .container{height: 30%;}
+    .card img{width: 225px; height: 225px;}
+    .desc p{font-size: 12px; width: 400px;}
+}
+
+@media(max-width: 1024px) { /* Tablets */
+    .container{height: 25%;}
+    .card img{width: 175px; height: 175px;}
+    .desc p{font-size: 10px; width: 300px;}
+}
+
+@media(max-width: 768px) { /* Large phones */
+    .container{height: 20%;}
+    .card img{width: 125px; height: 125px;}
+    .desc p{font-size: 8px; width: 200px;}
+}
+
+@media(max-width: 524px) { /* Small phones */
+    .container{height: 15%;}
+    .card img{width: 100px; height: 100px;}
+    .desc p{font-size: 6px; width: 150px;}
+}
